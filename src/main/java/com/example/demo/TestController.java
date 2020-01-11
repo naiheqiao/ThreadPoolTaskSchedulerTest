@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.support.CronTrigger;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,10 +50,10 @@ public class TestController {
     public void startCron(){
         myTaskList=new ArrayList<>();
         myTaskList.add(new MyTask("天地一部","*/2 * * * * *"));
-        myTaskList.add(new MyTask("天地二部","*/3 * * * * *"));
-        myTaskList.add(new MyTask("王者一部","*/5 * * * * *"));
+//        myTaskList.add(new MyTask("天地二部","*/3 * * * * *"));
+//        myTaskList.add(new MyTask("王者一部","*/5 * * * * *"));
         myTaskList.add(new MyTask("王者二部","*/7 * * * * *"));
-        myTaskList.add(new MyTask("四方军团","*/11 * * * * *"));
+//        myTaskList.add(new MyTask("四方军团","*/11 * * * * *"));
 
         myTaskList.forEach(o->{
             ScheduledFuture future = threadPoolTaskScheduler.schedule(o,new CronTrigger(o.getCronStr()));
